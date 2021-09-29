@@ -2,7 +2,8 @@ import React, {useEffect} from 'react';
 import BookItem from "./BookItem";
 
 const BookList = function (props) {
-    if (props.books) {
+    // console.log(props.books)
+    if (props.books.length > 0) {
         return (
             <div> {
                 props.books.map(book =>
@@ -17,7 +18,9 @@ const BookList = function (props) {
         )
     } else {
         return (
-            <p>Список пуст</p>
+            <div>
+                <p>Список пуст</p>
+            </div>
         )
     }
 

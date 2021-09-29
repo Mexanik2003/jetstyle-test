@@ -14,22 +14,56 @@ function App() {
             {author: 'Бахытжан Бухарбай', title: 'Настольная книга казахского бизнесмена', cover: 'https://simg2.marwin.kz/media/catalog/product/cache/550cf8d20d514ab5650dc2adb71f19c7/5/5/555_1_5.jpg'},
         ]));
     };
-    const [bookList, setBookList] = useState(JSON.parse(localStorage.getItem('booklist')))
-    //console.log(bookList)
 
-    function deleteItem(e) {
-        console.log(e);
-        let newBookList = bookList.filter(book => book.title !== e.title);
+    const fetchBookList = JSON.parse(localStorage.getItem('booklist')) || [];
+    const [bookList, setBookList] = useState(
+        fetchBookList.map((item,key) => {
+            return {
+                ...item,
+                id: key
+            }
+        })
+    )
+
+    let [selectedBook, setEditFormVisibility] = useState({});
+
+    function deleteItem(book) {
+        let newBookList = bookList.filter(item => item.title !== book.title);
         setBookList(newBookList);
+    }
+
+    function openEditForm(book) {
+        setEditFormVisibility(book);
+    }
+
+    function closeForm(e) {
+        e.preventDefault();
+        setEditFormVisibility({});
+    }
+
+    function submitForm(book) {
+        bookList[book.id] = {
+            id: book.id,
+            author: book.author,
+            title: book.title,
+            cover: book.cover
+        };
+        setBookList(bookList);
+        setEditFormVisibility({});
     }
 
   return (
     <div className="App">
-      <Form/>
+        <Form
+            book = {selectedBook}
+            closeForm = {closeForm}
+            submitForm = {submitForm}
+        />
       <MainMenu/>
       <BookList
         books = {bookList}
         onDeleteItem={deleteItem}
+        onEditItem={openEditForm}
 
       />
     </div>

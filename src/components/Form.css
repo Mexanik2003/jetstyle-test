@@ -1,0 +1,48 @@
+.form-popup{
+    width:100vw;
+    min-height:100vh;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+    display:none;
+}
+
+.form-popup_visible {
+    display: block;
+}
+.form-popup .form-popup-content{
+    margin:40px auto 0px auto;
+    display: flex;
+    flex-direction: column;
+    max-width:300px;
+    /*height: 40px;*/
+    padding:10px;
+    background-color: #c5c5c5;
+    border-radius:5px;
+    box-shadow: 0px 0px 10px #000;
+}
+
+.form-popup__input {
+    width: 100%;
+    border-radius: 5px; /* Закругляем углы */
+    border: 0; /* Убираем дефолтные рамки */
+    margin: 10px 0;
+    height: 35px;
+    padding: 5px;
+    outline: none;
+}
+
+.form-popup__submit {
+    background-color: #FAF4D0;
+    border-radius: 5px; /* Закругляем углы */
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.form-popup__close {
+    background-color: #c7c7c7;
+    border-radius: 5px; /* Закругляем углы */
+    cursor: pointer;
+    margin: 0 10px;
+}
