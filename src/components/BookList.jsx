@@ -1,8 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import BookItem from "./BookItem";
 
 const BookList = function (props) {
-    // console.log(props.books)
     if (props.books.length > 0) {
         return (
             <div> {
@@ -23,8 +22,6 @@ const BookList = function (props) {
             </div>
         )
     }
-
-
 }
 
 export default BookList;

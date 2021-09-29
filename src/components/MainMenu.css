@@ -1,0 +1,7 @@
+.main-menu__btn {
+    border-radius: 5px; /* Закругляем углы */
+    cursor: pointer;
+    margin: 10px;
+    height: 35px;
+    width: 100px;
+}
